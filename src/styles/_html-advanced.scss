@@ -1,0 +1,49 @@
+.html-advanced {
+    .practice-block {
+        margin-bottom: 30px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        h3 {
+            color: $primary-color;
+            margin-bottom: 15px;
+            font-size: 1.4em;
+            border-bottom: 2px solid rgba($primary-color, 0.2);
+            padding-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+
+            &:before {
+                content: "📝";
+                font-size: 1.2em;
+            }
+        }
+
+        .code-example {
+            position: relative;
+            margin-top: 20px;
+
+            &:before {
+                content: '';
+                position: absolute;
+                top: 0;
+                left: -20px;
+                width: 4px;
+                height: 100%;
+                background: $primary-color;
+                border-radius: 2px;
+            }
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .html-advanced {
+        .practice-block {
+            padding: 15px;
+        }
+    }
+}

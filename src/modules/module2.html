@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Введение в HTML - основные теги, семантика, таблицы и формы">
+    <title>Модуль 2: Введение в HTML</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="module-title">Модуль 2: Введение в HTML</h1>
+            <nav class="site-nav" role="navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="module1.html">Модуль 1</a></li>
+                    <li class="nav-item"><a class="nav-link" href="module3.html">Модуль 3</a></li>
+                    <li class="nav-item"><a class="nav-link" href="module4.html">Модуль 4</a></li>
+                    <li class="nav-item"><a class="nav-link" href="module5.html">Модуль 5</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <h2>Содержание</h2>
+        <ul>
+            <li><a href="#basic-tags">Основные теги</a></li>
+            <li><a href="#iframe">Iframe</a></li>
+            <li><a href="#semantics">Семантика</a></li>
+            <li><a href="#tables">Таблицы</a></li>
+            <li><a href="#forms">Формы</a></li>
+        </ul>
+    </aside>
+    <button class="toggle-button">Открыть меню</button>
+    <main class="main-content">
+        <section class="module-section" id="basic-tags">
+            <h2 class="section-title">Основные теги</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    HTML (HyperText Markup Language) - это стандартный язык разметки для создания веб-страниц. Он используется для структурирования контента на вебе. Основные теги HTML включают:
+                </p>
+                <p class="section-text">
+                    Тег <span class="tag">&lt;!DOCTYPE html&gt;</span> указывает браузеру, что документ написан на HTML5. Это важно для правильного отображения страницы.
+                </p>
+                <ul class="section-list">
+                    <li class="section-item"><span class="tag">&lt;html&gt;</span> - корневой элемент HTML-документа.</li>
+                    <li class="section-item"><span class="tag">&lt;head&gt;</span> - содержит метаданные о документе, такие как заголовок и ссылки на стили.</li>
+                    <li class="section-item"><span class="tag">&lt;body&gt;</span> - основной контент веб-страницы, который видит пользователь.</li>
+                    <li class="section-item"><span class="tag">&lt;meta&gt;</span> - предоставляет метаданные, такие как кодировка и описание страницы.</li>
+                    <li class="section-item"><span class="tag">&lt;title&gt;</span> - задает заголовок страницы, отображаемый в вкладке браузера.</li>
+                </ul>
+                <p class="section-text">
+                    Каждый из этих тегов играет важную роль в структуре веб-страницы. Например, тег <span class="tag">&lt;head&gt;</span> содержит информацию, которая не отображается на странице, но важна для браузеров и поисковых систем.
+                </p>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример структуры HTML-документа:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+<span class="tag">&lt;!DOCTYPE html&gt;</span>
+<span class="tag">&lt;html <span class="attr-name">lang</span>=<span class="attr-value">"ru"</span>&gt;</span>
+<span class="tag">&lt;head&gt;</span>
+    <span class="tag">&lt;meta <span class="attr-name">charset</span>=<span class="attr-value">"UTF-8"</span>&gt;</span>
+    <span class="tag">&lt;title&gt;Заголовок страницы&lt;/title&gt;</span>
+<span class="tag">&lt;/head&gt;</span>
+<span class="tag">&lt;body&gt;</span>
+    <span class="tag">&lt;h1&gt;Добро пожаловать на мой сайт&lt;/h1&gt;</span>
+<span class="tag">&lt;/body&gt;</span>
+<span class="tag">&lt;/html&gt;</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="iframe">
+            <h2 class="section-title">Iframe</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Тег <span class="tag">&lt;iframe&gt;</span> используется для встраивания другого документа в текущую страницу. Это позволяет отображать контент с других сайтов или страниц, например, видео с YouTube или карты.
+                </p>
+                <p class="section-text">
+                    Iframe может использоваться для отображения различных типов контента, таких как видео, карты, или даже другие веб-страницы. Это полезно для интеграции стороннего контента без необходимости перенаправления пользователя.
+                </p>
+                <p class="section-text">
+                    Пример использования <span class="tag">&lt;iframe&gt;</span> для встраивания видео:
+                </p>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример встраивания видео с YouTube:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+<span class="tag">&lt;iframe <span class="attr-name">width</span>=<span class="attr-value">"560"</span> <span class="attr-name">height</span>=<span class="attr-value">"315"</span> <span class="attr-name">src</span>=<span class="attr-value">"https://www.youtube.com/embed/uCNWuSbPnt4"</span> <span class="attr-name">title</span>=<span class="attr-value">"YouTube video player"</span> <span class="attr-name">frameborder</span>=<span class="attr-value">"0"</span> <span class="attr-name">allow</span>=<span class="attr-value">"accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"</span> <span class="attr-name">allowfullscreen</span>&gt;</span>
+<span class="tag">&lt;/iframe&gt;</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+                <iframe
+                     width="100%"
+                     height="315"
+                     src="https://www.youtube.com/embed/uCNWuSbPnt4"
+                     title="YouTube video player"
+                     frameborder="0"
+                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                     allowfullscreen>
+                </iframe>
+            </div>
+        </section>
+
+        <section class="module-section" id="semantics">
+            <h2 class="section-title">Семантика</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Семантические теги помогают улучшить структуру документа и его доступность для пользователей и поисковых систем. Они делают код более понятным и логичным.
+                </p>
+                <p class="section-text">
+                    Использование семантических тегов также способствует SEO (поисковой оптимизации), так как поисковые системы могут легче интерпретировать содержание страницы. Например, использование тега <span class="tag">&lt;header&gt;</span> для заголовка страницы помогает поисковым системам понять, что это важная часть документа.
+                </p>
+                <p class="section-text">
+                    Семантические теги, такие как <span class="tag">&lt;article&gt;</span>, <span class="tag">&lt;section&gt;</span>, и <span class="tag">&lt;footer&gt;</span>, помогают структурировать контент так, чтобы он был более доступным для пользователей и поисковых систем.
+                </p>
+                <ul class="section-list">
+                    <li class="section-item"><span class="tag">&lt;h1&gt; - &lt;h6&gt;</span> - заголовки различного уровня, от самого важного (<span class="tag">&lt;h1&gt;</span>) до менее важного (<span class="tag">&lt;h6&gt;</span>).</li>
+                    <li class="section-item"><span class="tag">&lt;section&gt;</span> - определяет раздел документа.</li>
+                    <li class="section-item"><span class="tag">&lt;main&gt;</span> - основной контент страницы.</li>
+                    <li class="section-item"><span class="tag">&lt;header&gt;</span> - заголовок страницы или раздела.</li>
+                    <li class="section-item"><span class="tag">&lt;footer&gt;</span> - нижний колонтитул страницы или раздела.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример семантической структуры:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+<span class="tag">&lt;header&gt;</span>
+    <span class="tag">&lt;h1&gt;Заголовок страницы&lt;/h1&gt;</span>
+<span class="tag">&lt;/header&gt;</span>
+<span class="tag">&lt;main&gt;</span>
+    <span class="tag">&lt;section&gt;</span>
+        <span class="tag">&lt;h2&gt;Подзаголовок раздела&lt;/h2&gt;</span>
+        <span class="tag">&lt;p&gt;Некоторый текст в этом разделе.&lt;/p&gt;</span>
+    <span class="tag">&lt;/section&gt;</span>
+<span class="tag">&lt;/main&gt;</span>
+<span class="tag">&lt;footer&gt;</span>
+    <span class="tag">&lt;p&gt;© 2024 Мой сайт&lt;/p&gt;</span>
+<span class="tag">&lt;/footer&gt;</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="tables">
+            <h2 class="section-title">Таблицы</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Таблицы используются для представления данных в табличном формате. Они состоят из строк и столбцов, что позволяет организовать информацию в удобочитаемом виде.
+                </p>
+                <p class="section-text">
+                    Таблицы могут быть полезны для отображения статистики, расписаний, сравнений и других данных, которые требуют структурированного представления. Например, таблицы часто используются для представления данных о пользователях, продуктах или финансовых отчетах.
+                </p>
+                <p class="section-text">
+                    Таблицы также могут быть стилизованы с помощью CSS для улучшения визуального восприятия и могут быть адаптированы для мобильных устройств с помощью медиа-запросов.
+                </p>
+                <p class="section-text">
+                    Пример таблицы с данными о пользователях:
+                </p>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример таблицы:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+<span class="tag">&lt;table&gt;</span>
+    <span class="tag">&lt;thead&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;th&gt;Имя&lt;/th&gt;</span>
+            <span class="tag">&lt;th&gt;Возраст&lt;/th&gt;</span>
+            <span class="tag">&lt;th&gt;Город&lt;/th&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;/thead&gt;</span>
+    <span class="tag">&lt;tbody&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;td&gt;Иван&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;25&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;Москва&lt;/td&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+        <span class="tag">&lt;tr&gt;</span>
+            <span class="tag">&lt;td&gt;Мария&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;30&lt;/td&gt;</span>
+            <span class="tag">&lt;td&gt;Санкт-Петербург&lt;/td&gt;</span>
+        <span class="tag">&lt;/tr&gt;</span>
+    <span class="tag">&lt;/tbody&gt;</span>
+<span class="tag">&lt;/table&gt;</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+                <table class="table">
+                    <thead>
+                        <tr class="table-header">
+                            <th class="table-cell">Имя</th>
+                            <th class="table-cell">Возраст</th>
+                            <th class="table-cell">Город</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-row">
+                            <td class="table-cell">Иван</td>
+                            <td class="table-cell">25</td>
+                            <td class="table-cell">Москва</td>
+                        </tr>
+                        <tr class="table-row">
+                            <td class="table-cell">Мария</td>
+                            <td class="table-cell">30</td>
+                            <td class="table-cell">Санкт-Петербург</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="module-section" id="forms">
+            <h2 class="section-title">Формы</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Формы позволяют пользователям вводить данные и отправлять их на сервер. Они являются важной частью взаимодействия с пользователем на веб-сайтах.
+                </p>
+                <p class="section-text">
+                    Формы могут включать различные элементы, такие как текстовые поля, кнопки, флажки и выпадающие списки, что делает их гибкими для различных сценариев. Например, формы часто используются для регистрации пользователей, отправки комментариев или обратной связи.
+                </p>
+                <p class="section-text">
+                    Валидация форм важна для обеспечения корректности вводимых данных. HTML5 предоставляет множество атрибутов для валидации, таких как <span class="tag">required</span>, <span class="tag">minlength</span>, и <span class="tag">pattern</span>.
+                </p>
+                <p class="section-text">
+                    Пример формы для ввода данных:
+                </p>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример формы:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+<span class="tag">&lt;form <span class="attr-name">action</span>=<span class="attr-value">"/submit"</span> <span class="attr-name">method</span>=<span class="attr-value">"post"</span>&gt;</span>
+    <span class="tag">&lt;label <span class="attr-name">for</span>=<span class="attr-value">"name"</span>&gt;Имя:&lt;/label&gt;</span>
+    <span class="tag">&lt;input <span class="attr-name">type</span>=<span class="attr-value">"text"</span> <span class="attr-name">id</span>=<span class="attr-value">"name"</span> <span class="attr-name">name</span>=<span class="attr-value">"name"</span> <span class="attr-name">required</span>&gt;</span>
+    <span class="tag">&lt;label <span class="attr-name">for</span>=<span class="attr-value">"email"</span>&gt;Email:&lt;/label&gt;</span>
+    <span class="tag">&lt;input <span class="attr-name">type</span>=<span class="attr-value">"email"</span> <span class="attr-name">id</span>=<span class="attr-value">"email"</span> <span class="attr-name">name</span>=<span class="attr-value">"email"</span> <span class="attr-name">required</span>&gt;</span>
+    <span class="tag">&lt;input <span class="attr-name">type</span>=<span class="attr-value">"submit"</span> <span class="attr-name">value</span>=<span class="attr-value">"Отправить"</span>&gt;</span>
+<span class="tag">&lt;/form&gt;</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+                <form class="form" action="/submit" method="post">
+                    <label class="form-label" for="name">Имя:</label>
+                    <input class="form-input" type="text" id="name" name="name" required>
+                    <label class="form-label" for="email">Email:</label>
+                    <input class="form-input" type="email" id="email" name="email" required>
+                    <input class="form-submit" type="submit" value="Отправить">
+                </form>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer-text">&copy; 2024 Frontend Learning. Все права защищены.</p>
+    </footer>
+</body>
+</html>

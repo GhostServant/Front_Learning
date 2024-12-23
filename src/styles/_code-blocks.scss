@@ -1,0 +1,165 @@
+// Основные цвета для подсветки синтаксиса
+$syntax-tag: #2f6f9f;
+$syntax-attr: #4f9fcf;
+$syntax-string: #d44950;
+$syntax-comment: #608b4e;
+$syntax-property: #9cdcfe;
+$syntax-value: #ce9178;
+$syntax-selector: #d7ba7d;
+
+.code-example {
+    margin: 1rem 0;
+    border: 1px solid #e1e4e8;
+    border-radius: 6px;
+    overflow: hidden;
+
+    .code-header {
+        background: #363646;
+        padding: 0.5rem 1rem;
+
+        .code-description {
+            margin: 0;
+            font-size: 0.9rem;
+            color: #DCD7BA;
+        }
+    }
+
+    .code-block {
+        position: relative;
+        background: #1F1F28;
+        padding: 1rem;
+
+        pre {
+            margin: 0;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Consolas', 'Monaco', monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+
+            code {
+                font-family: 'Fira Code', monospace;
+                line-height: 1.6;
+                font-size: 14px;
+                display: block;
+                color: #d4d4d4;
+
+                // HTML
+                &.language-html {
+                    .tag {
+                        color: $syntax-tag;
+                        background-color: rgba($syntax-tag, 0.1);
+                        padding: 0 2px;
+                        border-radius: 2px;
+                    }
+
+                    .attr-name {
+                        color: $syntax-attr;
+                        font-style: italic;
+                    }
+
+                    .attr-value {
+                        color: $syntax-string;
+                        background-color: rgba($syntax-string, 0.1);
+                    }
+
+                    .comment {
+                        color: $syntax-comment;
+                        font-style: italic;
+                    }
+                }
+
+                // CSS
+                &.language-css {
+                    .selector {
+                        color: $syntax-selector;
+                        background-color: rgba($syntax-selector, 0.1);
+                    }
+
+                    .property {
+                        color: $syntax-property;
+                        font-style: italic;
+                    }
+
+                    .value {
+                        color: $syntax-value;
+                    }
+
+                    .unit {
+                        color: #b5cea8;
+                    }
+
+                    .punctuation {
+                        color: #d4d4d4;
+                    }
+
+                    .comment {
+                        color: $syntax-comment;
+                        font-style: italic;
+                    }
+                }
+
+                // JavaScript
+                &.language-javascript {
+                    .keyword {
+                        color: #569cd6;
+                        background-color: rgba(86, 156, 214, 0.1);
+                        padding: 0 2px;
+                        border-radius: 2px;
+                    }
+
+                    .string {
+                        color: $syntax-string;
+                        background-color: rgba($syntax-string, 0.1);
+                    }
+
+                    .number {
+                        color: #b5cea8;
+                    }
+
+                    .function {
+                        color: #dcdcaa;
+                        font-style: italic;
+                    }
+
+                    .operator {
+                        color: #d4d4d4;
+                    }
+
+                    .comment {
+                        color: $syntax-comment;
+                        font-style: italic;
+                    }
+
+                    .variable {
+                        color: #9cdcfe;
+                    }
+                }
+            }
+        }
+    }
+
+    .copy-button {
+        position: absolute;
+        top: 0.5rem;
+        right: 0.5rem;
+        padding: 0.25rem 0.5rem;
+        background: #fff;
+        border: 1px solid #e1e4e8;
+        border-radius: 3px;
+        font-size: 0.8rem;
+        cursor: pointer;
+        opacity: 0;
+        transition: opacity 0.2s;
+
+        &:hover {
+            background: #f1f1f1;
+        }
+    }
+
+    &:hover {
+        .copy-button {
+            opacity: 1;
+        }
+    }
+}

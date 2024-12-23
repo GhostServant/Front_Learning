@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Модуль 4: JS: база - вводный урок по JavaScript">
+    <title>Модуль 4: JS: база</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <h1 class="module-title">Модуль 4: JS: база</h1>
+            <nav class="site-nav" role="navigation">
+                <ul class="nav-list">
+                    <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
+                    <li class="nav-item"><a class="nav-link" href="module3.html">Модуль 3</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <aside class="sidebar">
+        <h2>Содержание</h2>
+        <ul>
+            <li><a href="#intro">Вводный урок по JS</a></li>
+            <li><a href="#standard-library">Стандартная библиотека</a></li>
+            <li><a href="#connecting-js">Подключение JS</a></li>
+            <li><a href="#variables">Переменные</a></li>
+            <li><a href="#functions">Функции</a></li>
+            <li><a href="#logging">Логирование и дебаггинг</a></li>
+            <li><a href="#modules">Модули</a></li>
+        </ul>
+    </aside>
+    <button class="toggle-button">Открыть меню</button>
+    <main class="main-content">
+        <section class="module-section" id="intro">
+            <h2 class="section-title">Вводный урок по JS</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    JavaScript (JS) - это язык программирования, который используется для создания интерактивных веб-страниц. Он позволяет добавлять динамическое поведение на веб-страницы, такие как обновление контента, валидация форм, анимации и многое другое.
+                </p>
+                <p class="section-text">
+                    Задачи для практики:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Написать простой скрипт, который выводит сообщение "Hello, World!" в консоль.</li>
+                    <li class="section-item">Создать переменные разных типов и вывести их значения.</li>
+                </ul>
+                <p class="section-text">
+                    Нюансы:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">JavaScript является языком программирования с динамической типизацией.</li>
+                    <li class="section-item">Важно понимать разницу между var, let и const.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример скрипта, который выводит сообщение "Hello, World!" в консоль:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">"Hello, World!"</span>);
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="standard-library">
+            <h2 class="section-title">Стандартная библиотека</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Стандартная библиотека JavaScript предоставляет множество встроенных объектов и методов для работы с данными и выполнения различных задач.
+                </p>
+                <p class="section-text">
+                    Задачи для практики:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Использовать встроенные методы для работы с массивами (например, push, pop, map, filter).</li>
+                    <li class="section-item">Работать с объектами и их методами (например, Object.keys, Object.values).</li>
+                </ul>
+                <p class="section-text">
+                    Нюансы:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Стандартная библиотека JavaScript предоставляет множество встроенных объектов и методов.</li>
+                    <li class="section-item">Важно изучать документацию, такую как MDN или webreference, для понимания всех возможностей.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример использования встроенных методов для работы с массивами:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="keyword">let</span> numbers = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>];
+numbers.<span class="function">push</span>(<span class="number">6</span>); <span class="comment">// Добавляет элемент в конец массива</span>
+numbers.<span class="function">pop</span>(); <span class="comment">// Удаляет последний элемент массива</span>
+<span class="keyword">let</span> doubled = numbers.<span class="function">map</span>(num => num * <span class="number">2</span>); <span class="comment">// Удваивает каждый элемент массива</span>
+<span class="keyword">let</span> evenNumbers = numbers.<span class="function">filter</span>(num => num % <span class="number">2</span> === <span class="number">0</span>); <span class="comment">// Фильтрует четные числа</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="connecting-js">
+            <h2 class="section-title">Подключение JS</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    JavaScript можно подключать к HTML-документу как внешним файлом, так и встроенным кодом.
+                </p>
+                <p class="section-text">
+                    Задачи для практики:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Подключить внешний JavaScript файл к HTML-документу.</li>
+                    <li class="section-item">Вставить JavaScript код непосредственно в HTML-документ с помощью тега <span class="tag">&lt;script&gt;</span>.</li>
+                </ul>
+                <p class="section-text">
+                    Нюансы:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">JavaScript можно подключать как внешним файлом, так и встроенным кодом.</li>
+                    <li class="section-item">Подключение внешнего файла позволяет разделить логику и представление, что улучшает структуру проекта.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример подключения внешнего JavaScript файла:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+<span class="tag">&lt;script src="script.js"&gt;&lt;/script&gt;</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример встроенного JavaScript кода:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-html">
+<span class="tag">&lt;script&gt;</span>
+<span class="keyword">console</span>.<span class="function">log</span>(<span class="string">"Hello, World!"</span>);
+<span class="tag">&lt;/script&gt;</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="variables">
+            <h2 class="section-title">Переменные</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Переменные используются для хранения данных, которые могут изменяться в процессе выполнения программы.
+                </p>
+                <p class="section-text">
+                    Задачи для практики:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Объявить переменные с использованием let и const.</li>
+                    <li class="section-item">Изменить значение переменной и вывести его в консоль.</li>
+                </ul>
+                <p class="section-text">
+                    Нюансы:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">let используется для объявления переменных, значение которых может изменяться.</li>
+                    <li class="section-item">const используется для объявления констант, значение которых не может быть изменено после инициализации.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример объявления переменных с использованием let и const:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="keyword">let</span> name = <span class="string">"John"</span>; <span class="comment">// Переменная, значение которой можно изменить</span>
+<span class="keyword">const</span> age = <span class="number">30</span>; <span class="comment">// Константа, значение которой нельзя изменить</span>
+name = <span class="string">"Jane"</span>; <span class="comment">// Изменение значения переменной</span>
+<span class="keyword">console</span>.<span class="function">log</span>(name); <span class="comment">// Вывод значения переменной</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="functions">
+            <h2 class="section-title">Функции</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Функции позволяют группировать блоки кода для повторного использования. Они могут принимать аргументы и возвращать значения.
+                </p>
+                <p class="section-text">
+                    Задачи для практики:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Написать функцию, которая принимает два аргумента и возвращает их сумму.</li>
+                    <li class="section-item">Создать функцию, которая выводит сообщение в консоль при вызове.</li>
+                </ul>
+                <p class="section-text">
+                    Нюансы:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Функции могут быть объявлены с помощью ключевого слова function или как стрелочные функции.</li>
+                    <li class="section-item">Важно понимать разницу между объявлением функции и функциональным выражением.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример функции, которая принимает два аргумента и возвращает их сумму:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="keyword">function</span> sum(a, b) {
+    <span class="keyword">return</span> a + b;
+}
+<span class="keyword">console</span>.<span class="function">log</span>(sum(<span class="number">2</span>, <span class="number">3</span>)); <span class="comment">// Вывод: 5</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример функции, которая выводит сообщение в консоль при вызове:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="keyword">function</span> greet() {
+    <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">"Hello, World!"</span>);
+}
+greet(); <span class="comment">// Вывод: Hello, World!</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="logging">
+            <h2 class="section-title">Логирование и дебаггинг</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Логирование и дебаггинг помогают отслеживать выполнение кода и находить ошибки.
+                </p>
+                <p class="section-text">
+                    Задачи для практики:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Использовать console.log для вывода значений переменных и результатов выполнения функций.</li>
+                    <li class="section-item">Использовать debugger для пошагового выполнения кода и анализа ошибок.</li>
+                </ul>
+                <p class="section-text">
+                    Нюансы:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Логирование помогает отслеживать выполнение кода и находить ошибки.</li>
+                    <li class="section-item">Встроенные инструменты разработчика в браузере предоставляют мощные средства для дебаггинга.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример использования console.log для вывода значений переменных:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="keyword">let</span> name = <span class="string">"John"</span>;
+<span class="keyword">console</span>.<span class="function">log</span>(name); <span class="comment">// Вывод: John</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример использования debugger для пошагового выполнения кода:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="keyword">function</span> example() {
+    <span class="keyword">let</span> a = <span class="number">1</span>;
+    <span class="keyword">debugger</span>; <span class="comment">// Останавливает выполнение кода на этой строке</span>
+    <span class="keyword">let</span> b = <span class="number">2</span>;
+    <span class="keyword">console</span>.<span class="function">log</span>(a + b);
+}
+example();
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="module-section" id="modules">
+            <h2 class="section-title">Модули</h2>
+            <div class="content-wrapper">
+                <p class="section-text">
+                    Модули позволяют организовать код и повторно использовать его в разных частях приложения.
+                </p>
+                <p class="section-text">
+                    Задачи для практики:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Создать модуль и экспортировать функции или переменные с помощью export.</li>
+                    <li class="section-item">Импортировать модуль в другой файл с помощью import.</li>
+                </ul>
+                <p class="section-text">
+                    Нюансы:
+                </p>
+                <ul class="section-list">
+                    <li class="section-item">Модули позволяют организовать код и повторно использовать его в разных частях приложения.</li>
+                    <li class="section-item">Важно понимать разницу между именованным экспортом и экспортом по умолчанию.</li>
+                </ul>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример создания модуля и экспорта функции:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="comment">// module.js</span>
+<span class="keyword">export</span> <span class="keyword">function</span> greet() {
+    <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">"Hello, World!"</span>);
+}
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+                <div class="code-example">
+                    <div class="code-header">
+                        <p class="code-description">Пример импорта модуля в другой файл:</p>
+                    </div>
+                    <div class="code-block">
+                        <pre><code class="language-javascript">
+<span class="comment">// main.js</span>
+<span class="keyword">import</span> { greet } <span class="keyword">from</span> <span class="string">'./module.js'</span>;
+greet(); <span class="comment">// Вывод: Hello, World!</span>
+                        </code></pre>
+                        <button class="copy-button">Копировать</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="footer">
+        <p class="footer-text">&copy; 2024 Frontend Learning. Все права защищены.</p>
+    </footer>
+</body>
+</html>

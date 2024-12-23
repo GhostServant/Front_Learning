@@ -1,0 +1,188 @@
+@import './../base/variables';
+@import './../mixins';
+@import './../code-blocks';
+@import './../vscode-section';
+@import './../html-advanced';
+@import './../sidebar';
+
+body {
+    font-family: $font-family-base;
+    line-height: $line-height-base;
+    margin: 0;
+    padding: 0;
+    background-color: $background-color;
+    color: $text-color;
+}
+
+ul{
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: #06c;  /* Основной цвет ползунка */
+        border: 2px solid rgba(255, 255, 255, 0.5);  /* Полупрозрачные белые границы */
+    }
+    
+    &::-webkit-scrollbar-thumb:hover {
+        background-color: #05a;  /* Цвет при наведении, немного темнее */
+    }
+    
+    &::-webkit-scrollbar-track {
+        background-color: rgba(255, 255, 255, 0.2);  /* Полупрозрачный белый фон дорожки */
+        border-radius: 5px;
+    }
+}
+
+.site-header {
+    background: $primary-color;
+    color: #fff;
+    padding: $spacing-unit * 2 0;
+    box-shadow: $shadow-md;
+
+    .header-container {
+        max-width: $container-max-width;
+        margin: 0 auto;
+        padding: 0 $spacing-unit * 2;
+    }
+
+    .module-title {
+        margin: 0;
+        font-size: 2em;
+        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
+    }
+}
+
+.site-nav {
+    margin-top: $spacing-unit * 2;
+
+    .nav-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        align-items: center;
+        gap: $spacing-unit * 2;
+
+        &::-webkit-scrollbar {
+            height: 10px;
+        }
+    }
+
+    .nav-item{
+        white-space: nowrap;
+    }
+
+    .nav-link {
+        color: #fff;
+        text-decoration: none;
+        padding: $spacing-unit $spacing-unit * 2;
+        border-radius: $border-radius-sm;
+        transition: background-color 0.3s;
+
+        &:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+    }
+}
+
+.main-content {
+    max-width: $container-max-width;
+    margin: 0 auto;
+    padding: $spacing-unit * 4 $spacing-unit * 2;
+}
+
+.module-section {
+    margin-bottom: $spacing-unit * 5;
+    padding: $spacing-unit * 3;
+    border-radius: $border-radius-md;
+    background-color: rgba(255, 255, 255, 0.9);
+    box-shadow: $shadow-sm;
+
+    .section-title {
+        color: $primary-color;
+        border-bottom: 2px solid $primary-color;
+        padding-bottom: $spacing-unit;
+        margin-bottom: $spacing-unit * 3;
+        font-size: 1.8em;
+    }
+
+    .content-wrapper {
+        max-width: 100%;
+    }
+}
+
+.site-footer {
+    background: $secondary-color;
+    color: white;
+    padding: $spacing-unit * 2 0;
+    margin-top: $spacing-unit * 5;
+
+    .footer-content {
+        max-width: $container-max-width;
+        margin: 0 auto;
+        padding: 0 $spacing-unit * 2;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .footer-links {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+
+        a {
+            color: white;
+            text-decoration: none;
+
+            &:hover {
+                text-decoration: underline;
+            }
+        }
+    }
+}
+
+@media (max-width: $breakpoint-xl){
+    .site-header{
+        .site-nav{
+            overflow: auto;
+        }
+    }
+}
+
+@media (max-width: $breakpoint-md) {
+    .site-header {
+        .header-container {
+            padding: 0 $spacing-unit;
+        }
+
+        .module-title {
+            font-size: 1.5em;
+        }
+    }
+
+    .main-content {
+        padding: $spacing-unit * 2 $spacing-unit;
+    }
+
+    .module-section {
+        padding: $spacing-unit * 2;
+        margin-bottom: $spacing-unit * 3;
+    }
+
+    .site-nav {
+        .nav-list {
+            overflow-y: hidden;
+            gap: $spacing-unit;
+        }
+        .nav-link{
+            padding: $spacing-unit / 2 $spacing-unit * 1.5;
+        }
+    }
+
+    .site-footer {
+        .footer-content {
+            flex-direction: column;
+            text-align: center;
+            gap: $spacing-unit * 2;
+        }
+    }
+}
