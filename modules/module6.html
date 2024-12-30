@@ -1,0 +1,172 @@
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Модуль 6: JS: база - циклы, localStorage, sessionStorage, Todo list, области видимости, замыкания, DOM, события"><title>Модуль 6: JS: база</title><script defer="defer" src="/scripts/runtime.16bbcaf27b882bf45d63.js"></script><script defer="defer" src="/scripts/bundle.1db5454bf79c26020f9c.js"></script><script defer="defer" src="/scripts/main.0257d96a554c26170594.js"></script><link href="/styles/main.397fb9fb02bb5ad16f46.css" rel="stylesheet"></head><body><div class="container"><header class="site-header"></header><aside class="sidebar"><h2>Содержание</h2><ul><li><a href="#loops">Циклы: for, while, do while</a></li><li><a href="#local-storage">LocalStorage, sessionStorage</a></li><li><a href="#todo-list">Todo list, alert, confirm, prompt</a></li><li><a href="#scope">Области видимости</a></li><li><a href="#closures">Замыкания</a></li><li><a href="#dom-window">DOM, window, document, this</a></li><li><a href="#dom-manipulation">Манипуляция DOM</a></li><li><a href="#dom-events">События DOM и события</a></li></ul></aside><button class="toggle-button">Открыть меню</button><main class="main-content"><section class="module-section" id="loops"><h2 class="section-title">Циклы: for, while, do while</h2><div class="content-wrapper"><p class="section-text">Циклы позволяют повторять выполнение блока кода до тех пор, пока условие истинно. В JavaScript существуют три основных типа циклов: for, while и do while.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Написать цикл for, который выводит числа от 1 до 10 в консоль.</li><li class="section-item">Использовать цикл while для выполнения операции, пока условие истинно.</li><li class="section-item">Написать цикл do while, который выполняет операцию хотя бы один раз, даже если условие ложно.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">Циклы позволяют повторять выполнение блока кода до тех пор, пока условие истинно.</li><li class="section-item">Важно понимать разницу между for, while и do while и выбирать подходящий цикл для конкретной задачи.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример использования цикла for:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">1</span>; i &lt;= <span class="number">10</span>; i++) {
+    <span class="keyword">console</span>.<span class="function">log</span>(i);
+}
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример использования цикла while:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">let</span> i = <span class="number">1</span>;
+<span class="keyword">while</span> (i &lt;= <span class="number">10</span>) {
+    <span class="keyword">console</span>.<span class="function">log</span>(i);
+    i++;
+}
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример использования цикла do while:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">let</span> i = <span class="number">1</span>;
+<span class="keyword">do</span> {
+    <span class="keyword">console</span>.<span class="function">log</span>(i);
+    i++;
+} <span class="keyword">while</span> (i &lt;= <span class="number">10</span>);
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="local-storage"><h2 class="section-title">LocalStorage, sessionStorage</h2><div class="content-wrapper"><p class="section-text">LocalStorage и sessionStorage позволяют хранить данные на стороне клиента. LocalStorage сохраняет данные даже после закрытия браузера, тогда как sessionStorage очищается после закрытия вкладки или окна браузера.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Сохранить данные в localStorage и затем извлечь их.</li><li class="section-item">Использовать sessionStorage для хранения данных, которые должны быть доступны только в течение сессии.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">LocalStorage и sessionStorage позволяют хранить данные на стороне клиента.</li><li class="section-item">LocalStorage сохраняет данные даже после закрытия браузера, тогда как sessionStorage очищается после закрытия вкладки или окна браузера.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример использования localStorage:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Сохранение данных в localStorage</span>
+<span class="keyword">localStorage</span>.<span class="function">setItem</span>(<span class="string">'name'</span>, <span class="string">'John'</span>);
+
+<span class="comment">// Извлечение данных из localStorage</span>
+<span class="keyword">let</span> name = <span class="keyword">localStorage</span>.<span class="function">getItem</span>(<span class="string">'name'</span>);
+<span class="keyword">console</span>.<span class="function">log</span>(name); <span class="comment">// Вывод: John</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример использования sessionStorage:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Сохранение данных в sessionStorage</span>
+<span class="keyword">sessionStorage</span>.<span class="function">setItem</span>(<span class="string">'age'</span>, <span class="number">30</span>);
+
+<span class="comment">// Извлечение данных из sessionStorage</span>
+<span class="keyword">let</span> age = <span class="keyword">sessionStorage</span>.<span class="function">getItem</span>(<span class="string">'age'</span>);
+<span class="keyword">console</span>.<span class="function">log</span>(age); <span class="comment">// Вывод: 30</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="todo-list"><h2 class="section-title">Todo list, alert, confirm, prompt</h2><div class="content-wrapper"><p class="section-text">Функции alert, confirm и prompt позволяют взаимодействовать с пользователем, отображая модальные окна с сообщениями, подтверждениями и запросами ввода данных.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Создать простое приложение Todo list, которое позволяет добавлять, удалять и отмечать задачи как выполненные.</li><li class="section-item">Использовать alert для отображения сообщений, confirm для подтверждения действий и prompt для ввода данных от пользователя.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">Функции alert, confirm и prompt являются встроенными функциями для взаимодействия с пользователем.</li><li class="section-item">Важно понимать, как эти функции работают и как они могут быть использованы для улучшения пользовательского опыта.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример использования alert, confirm и prompt:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Пример использования alert</span>
+<span class="keyword">alert</span>(<span class="string">'Привет, мир!'</span>);
+
+<span class="comment">// Пример использования confirm</span>
+<span class="keyword">let</span> result = <span class="keyword">confirm</span>(<span class="string">'Вы уверены?'</span>);
+<span class="keyword">console</span>.<span class="function">log</span>(result); <span class="comment">// Вывод: true или false</span>
+
+<span class="comment">// Пример использования prompt</span>
+<span class="keyword">let</span> userInput = <span class="keyword">prompt</span>(<span class="string">'Введите ваше имя:'</span>);
+<span class="keyword">console</span>.<span class="function">log</span>(userInput); <span class="comment">// Вывод: введенное имя</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="scope"><h2 class="section-title">Области видимости</h2><div class="content-wrapper"><p class="section-text">Области видимости определяют, где переменные и функции доступны в коде. В JavaScript существуют глобальная, функциональная и блочная области видимости.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Написать функцию, которая демонстрирует разницу между глобальной и локальной областями видимости.</li><li class="section-item">Использовать блочную область видимости с let и const.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">Области видимости определяют, где переменные и функции доступны в коде.</li><li class="section-item">Важно понимать разницу между глобальной, функциональной и блочной областями видимости.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример демонстрации разницы между глобальной и локальной областями видимости:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">let</span> globalVar = <span class="string">'Я глобальная переменная'</span>;
+
+<span class="keyword">function</span> exampleFunction() {
+    <span class="keyword">let</span> localVar = <span class="string">'Я локальная переменная'</span>;
+    <span class="keyword">console</span>.<span class="function">log</span>(localVar); <span class="comment">// Вывод: Я локальная переменная</span>
+}
+
+exampleFunction();
+<span class="keyword">console</span>.<span class="function">log</span>(globalVar); <span class="comment">// Вывод: Я глобальная переменная</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример использования блочной области видимости с let и const:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">if</span> (<span class="keyword">true</span>) {
+    <span class="keyword">let</span> blockVar = <span class="string">'Я блочная переменная'</span>;
+    <span class="keyword">const</span> blockConst = <span class="string">'Я блочная константа'</span>;
+    <span class="keyword">console</span>.<span class="function">log</span>(blockVar); <span class="comment">// Вывод: Я блочная переменная</span>
+    <span class="keyword">console</span>.<span class="function">log</span>(blockConst); <span class="comment">// Вывод: Я блочная константа</span>
+}
+
+<span class="comment">// Ошибка: blockVar и blockConst недоступны за пределами блока</span>
+<span class="comment">// console.log(blockVar);</span>
+<span class="comment">// console.log(blockConst);</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="closures"><h2 class="section-title">Замыкания</h2><div class="content-wrapper"><p class="section-text">Замыкания позволяют функции запоминать и иметь доступ к переменным из своей лексической области видимости. Это означает, что функция может использовать переменные, объявленные вне её, даже после завершения выполнения внешней функции.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Создать функцию, которая возвращает другую функцию, использующую замыкание.</li><li class="section-item">Использовать замыкание для сохранения состояния между вызовами функции.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">Замыкания позволяют функции запоминать и иметь доступ к переменным из своей лексической области видимости.</li><li class="section-item">Важно понимать, как замыкания работают и как они могут быть использованы для создания модулей и сохранения состояния.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример функции, возвращающей другую функцию с использованием замыкания:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">function</span> createCounter() {
+    <span class="keyword">let</span> count = <span class="number">0</span>;
+    <span class="keyword">return</span> <span class="keyword">function</span>() {
+        count++;
+        <span class="keyword">return</span> count;
+    };
+}
+
+<span class="keyword">const</span> counter = createCounter();
+<span class="keyword">console</span>.<span class="function">log</span>(counter()); <span class="comment">// Вывод: 1</span>
+<span class="keyword">console</span>.<span class="function">log</span>(counter()); <span class="comment">// Вывод: 2</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример использования замыкания для сохранения состояния между вызовами функции:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">function</span> createGreeting(name) {
+    <span class="keyword">return</span> <span class="keyword">function</span>(greeting) {
+        <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">`${greeting}, ${name}!`</span>);
+    };
+}
+
+<span class="keyword">const</span> greetJohn = createGreeting(<span class="string">'John'</span>);
+greetJohn(<span class="string">'Hello'</span>); <span class="comment">// Вывод: Hello, John!</span>
+greetJohn(<span class="string">'Hi'</span>); <span class="comment">// Вывод: Hi, John!</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="dom-window"><h2 class="section-title">DOM, window, document, this</h2><div class="content-wrapper"><p class="section-text">Объекты window и document предоставляют доступ к окну браузера и DOM соответственно. Ключевое слово this указывает на текущий контекст выполнения и может изменяться в зависимости от контекста.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Использовать объект window для выполнения операций, связанных с окном браузера.</li><li class="section-item">Манипулировать элементами DOM с помощью объекта document.</li><li class="section-item">Понять, как ключевое слово this работает в различных контекстах.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">Объекты window и document предоставляют доступ к окну браузера и DOM соответственно.</li><li class="section-item">Ключевое слово this указывает на текущий контекст выполнения и может изменяться в зависимости от контекста.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример использования объекта window:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Открыть новое окно</span>
+<span class="keyword">window</span>.<span class="function">open</span>(<span class="string">'https://www.example.com'</span>, <span class="string">'_blank'</span>);
+
+<span class="comment">// Закрыть текущее окно</span>
+<span class="keyword">window</span>.<span class="function">close</span>();
+
+<span class="comment">// Переместить окно</span>
+<span class="keyword">window</span>.<span class="function">moveTo</span>(<span class="number">100</span>, <span class="number">100</span>);
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример манипуляции элементами DOM с помощью объекта document:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Создать новый элемент</span>
+<span class="keyword">let</span> newElement = <span class="keyword">document</span>.<span class="function">createElement</span>(<span class="string">'div'</span>);
+
+<span class="comment">// Добавить текст в элемент</span>
+newElement.textContent = <span class="string">'Привет, мир!'</span>;
+
+<span class="comment">// Добавить элемент в DOM</span>
+<span class="keyword">document</span>.<span class="function">body</span>.<span class="function">appendChild</span>(newElement);
+
+<span class="comment">// Изменить стиль элемента</span>
+newElement.style.color = <span class="string">'blue'</span>;
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример использования ключевого слова this:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="keyword">function</span> Person(name) {
+    <span class="keyword">this</span>.name = name;
+    <span class="keyword">this</span>.greet = <span class="keyword">function</span>() {
+        <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">`Привет, ${this.name}!`</span>);
+    };
+}
+
+<span class="keyword">const</span> john = <span class="keyword">new</span> Person(<span class="string">'John'</span>);
+john.greet(); <span class="comment">// Вывод: Привет, John!</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="dom-manipulation"><h2 class="section-title">Манипуляция DOM</h2><div class="content-wrapper"><p class="section-text">Манипуляция DOM позволяет динамически изменять содержимое и структуру веб-страницы. Это включает создание, изменение и удаление элементов, а также изменение их стилей и атрибутов.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Создать, изменить и удалить элементы DOM с помощью методов createElement, appendChild, removeChild.</li><li class="section-item">Изменить стили и атрибуты элементов DOM.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">Манипуляция DOM позволяет динамически изменять содержимое и структуру веб-страницы.</li><li class="section-item">Важно понимать, как работают различные методы и свойства DOM для эффективного управления элементами.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример создания, изменения и удаления элементов DOM:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Создать новый элемент</span>
+<span class="keyword">let</span> newElement = <span class="keyword">document</span>.<span class="function">createElement</span>(<span class="string">'div'</span>);
+
+<span class="comment">// Добавить текст в элемент</span>
+newElement.textContent = <span class="string">'Привет, мир!'</span>;
+
+<span class="comment">// Добавить элемент в DOM</span>
+<span class="keyword">document</span>.<span class="function">body</span>.<span class="function">appendChild</span>(newElement);
+
+<span class="comment">// Удалить элемент из DOM</span>
+<span class="keyword">document</span>.<span class="function">body</span>.<span class="function">removeChild</span>(newElement);
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример изменения стилей и атрибутов элементов DOM:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Получить элемент по ID</span>
+<span class="keyword">let</span> element = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'myElement'</span>);
+
+<span class="comment">// Изменить стиль элемента</span>
+element.style.color = <span class="string">'blue'</span>;
+element.style.fontSize = <span class="string">'20px'</span>;
+
+<span class="comment">// Изменить атрибут элемента</span>
+element.setAttribute(<span class="string">'data-info'</span>, <span class="string">'some value'</span>);
+
+<span class="comment">// Получить значение атрибута</span>
+<span class="keyword">let</span> attributeValue = element.getAttribute(<span class="string">'data-info'</span>);
+<span class="keyword">console</span>.<span class="function">log</span>(attributeValue); <span class="comment">// Вывод: some value</span>
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="dom-events"><h2 class="section-title">События DOM и события</h2><div class="content-wrapper"><p class="section-text">События DOM позволяют реагировать на действия пользователя и изменения состояния элементов. Это включает клики, ввод текста, изменение значений и другие события.</p><p class="section-text">Задачи для практики:</p><ul class="section-list"><li class="section-item">Добавить обработчики событий для различных элементов DOM, таких как клики, ввод текста и изменение значений.</li><li class="section-item">Использовать методы addEventListener и removeEventListener для управления событиями.</li></ul><p class="section-text">Нюансы:</p><ul class="section-list"><li class="section-item">События DOM позволяют реагировать на действия пользователя и изменения состояния элементов.</li><li class="section-item">Важно понимать, как работают события и как они могут быть использованы для создания интерактивных веб-приложений.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример добавления обработчика события для клика:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Получить элемент по ID</span>
+<span class="keyword">let</span> button = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'myButton'</span>);
+
+<span class="comment">// Добавить обработчик события для клика</span>
+button.addEventListener(<span class="string">'click'</span>, <span class="keyword">function</span>() {
+    <span class="keyword">alert</span>(<span class="string">'Кнопка нажата!'</span>);
+});
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример добавления обработчика события для ввода текста:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Получить элемент по ID</span>
+<span class="keyword">let</span> input = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'myInput'</span>);
+
+<span class="comment">// Добавить обработчик события для ввода текста</span>
+input.addEventListener(<span class="string">'input'</span>, <span class="keyword">function</span>(event) {
+    <span class="keyword">console</span>.<span class="function">log</span>(<span class="string">`Введено: ${event.target.value}`</span>);
+});
+                        </code></pre><button class="copy-button">Копировать</button></div></div><div class="code-example"><div class="code-header"><p class="code-description">Пример удаления обработчика события:</p></div><div class="code-block"><pre><code class="language-javascript">
+<span class="comment">// Получить элемент по ID</span>
+<span class="keyword">let</span> button = <span class="keyword">document</span>.<span class="function">getElementById</span>(<span class="string">'myButton'</span>);
+
+<span class="comment">// Функция обработчика события</span>
+<span class="keyword">function</span> handleClick() {
+    <span class="keyword">alert</span>(<span class="string">'Кнопка нажата!'</span>);
+}
+
+<span class="comment">// Добавить обработчик события для клика</span>
+button.addEventListener(<span class="string">'click'</span>, handleClick);
+
+<span class="comment">// Удалить обработчик события для клика</span>
+button.removeEventListener(<span class="string">'click'</span>, handleClick);
+                        </code></pre><button class="copy-button">Копировать</button></div></div></div></section></main><footer class="site-footer"></footer><div class="code-editor__container"><img src="./../images/icons/code-editor.svg" alt="code editor icon"></div></div><div class="loader-container" id="loader-container"><div class="loader"></div></div></body></html>

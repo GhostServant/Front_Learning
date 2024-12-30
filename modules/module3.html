@@ -1,0 +1,345 @@
+<!doctype html><html lang="ru"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="description" content="Модуль 3: Базовый CSS - свойство position, псевдоклассы и псевдоэлементы, медиа выражения, зачетная работа, способы подключения CSS, селекторы, шрифты, свойство display, flex и grid"><title>Модуль 3: Базовый CSS</title><script defer="defer" src="/scripts/runtime.16bbcaf27b882bf45d63.js"></script><script defer="defer" src="/scripts/bundle.1db5454bf79c26020f9c.js"></script><script defer="defer" src="/scripts/main.0257d96a554c26170594.js"></script><link href="/styles/main.397fb9fb02bb5ad16f46.css" rel="stylesheet"></head><body><div class="container"><header class="site-header"></header><aside class="sidebar"><h2>Содержание</h2><ul><li><a href="#position">Свойство position</a></li><li><a href="#pseudo">Псевдоклассы и псевдоэлементы</a></li><li><a href="#media">Медиа выражения</a></li><li><a href="#final-project">Зачетная работа по модулю 3</a></li><li><a href="#css-linking">CSS и способы его подключения</a></li><li><a href="#selectors">Основные селекторы, специфичность, каскадность</a></li><li><a href="#fonts">Шрифты</a></li><li><a href="#display">Свойство display</a></li><li><a href="#flex">Display: flex</a></li><li><a href="#grid">Display: grid</a></li></ul></aside><button class="toggle-button">Открыть меню</button><main class="main-content"><section class="module-section" id="position"><h2 class="section-title">Свойство position</h2><div class="content-wrapper"><p class="section-text">Свойство <span class="tag">position</span> в CSS определяет метод позиционирования элемента. Возможные значения:</p><ul class="section-list"><li class="section-item"><span class="tag">static</span> (по умолчанию): элемент позиционируется в обычном потоке документа.</li><li class="section-item"><span class="tag">relative</span>: элемент позиционируется относительно своего нормального положения.</li><li class="section-item"><span class="tag">absolute</span>: элемент позиционируется относительно ближайшего позиционированного предка (не static).</li><li class="section-item"><span class="tag">fixed</span>: элемент позиционируется относительно окна просмотра.</li><li class="section-item"><span class="tag">sticky</span>: элемент позиционируется как relative до тех пор, пока не достигнет определенного порога прокрутки, после чего становится fixed.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Position Example&lt;/title&gt;
+    &lt;style&gt;
+        .relative {
+            <span class="property">position</span>: <span class="value">relative</span>;
+            <span class="property">top</span>: <span class="value">20px</span>;
+            <span class="property">left</span>: <span class="value">20px</span>;
+        }
+        .absolute {
+            <span class="property">position</span>: <span class="value">absolute</span>;
+            <span class="property">top</span>: <span class="value">50px</span>;
+            <span class="property">left</span>: <span class="value">50px</span>;
+        }
+        .fixed {
+            <span class="property">position</span>: <span class="value">fixed</span>;
+            <span class="property">bottom</span>: <span class="value">0</span>;
+            <span class="property">right</span>: <span class="value">0</span>;
+        }
+        .sticky {
+            <span class="property">position</span>: <span class="value">sticky</span>;
+            <span class="property">top</span>: <span class="value">0</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="relative"&gt;Relative Position&lt;/div&gt;
+    &lt;div class="absolute"&gt;Absolute Position&lt;/div&gt;
+    &lt;div class="fixed"&gt;Fixed Position&lt;/div&gt;
+    &lt;div style="height: 1000px;"&gt;Scroll down to see sticky position&lt;/div&gt;
+    &lt;div class="sticky"&gt;Sticky Position&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="pseudo"><h2 class="section-title">Псевдоклассы и псевдоэлементы</h2><div class="content-wrapper"><p class="section-text">Псевдоклассы и псевдоэлементы позволяют применять стили к элементам в определенных состояниях или частях элементов.</p><ul class="section-list"><li class="section-item">Псевдоклассы: <span class="tag">:hover</span>, <span class="tag">:focus</span>, <span class="tag">:nth-child()</span>, <span class="tag">:first-child</span>, <span class="tag">:last-child</span>.</li><li class="section-item">Псевдоэлементы: <span class="tag">::before</span>, <span class="tag">::after</span>, <span class="tag">::first-line</span>, <span class="tag">::first-letter</span>.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Pseudo-classes and Pseudo-elements Example&lt;/title&gt;
+    &lt;style&gt;
+        .hover-example:hover {
+            <span class="property">background-color</span>: <span class="value">yellow</span>;
+        }
+        .focus-example:focus {
+            <span class="property">outline</span>: <span class="value">2px solid blue</span>;
+        }
+        .before-example::before {
+            <span class="property">content</span>: "<span class="value">"Before: "</span>;
+            <span class="property">color</span>: <span class="value">red</span>;
+        }
+        .after-example::after {
+            <span class="property">content</span>: "<span class="value">" - After"</span>;
+            <span class="property">color</span>: <span class="value">green</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="hover-example"&gt;Hover over me&lt;/div&gt;
+    &lt;input type="text" class="focus-example" placeholder="Focus on me"&gt;
+    &lt;p class="before-example"&gt;Text with before pseudo-element&lt;/p&gt;
+    &lt;p class="after-example"&gt;Text with after pseudo-element&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="media"><h2 class="section-title">Медиа выражения</h2><div class="content-wrapper"><p class="section-text">Медиа выражения (media queries) позволяют применять стили в зависимости от характеристик устройства, таких как ширина экрана, ориентация и разрешение.</p><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Media Queries Example&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            <span class="property">background-color</span>: <span class="value">lightblue</span>;
+        }
+        @media (max-width: 600px) {
+            body {
+                <span class="property">background-color</span>: <span class="value">lightcoral</span>;
+            }
+        }
+        @media (orientation: portrait) {
+            body {
+                <span class="property">background-color</span>: <span class="value">lightgreen</span>;
+            }
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;Resize the browser window to see the media queries in action.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="final-project"><h2 class="section-title">Зачетная работа по модулю 3 "Базовый CSS"</h2><div class="content-wrapper"><p class="section-text">Зачетная работа по модулю "Базовый CSS" включает создание веб-страницы с использованием основных CSS-свойств и техник.</p><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Final Project&lt;/title&gt;
+    &lt;style&gt;
+        body {
+            <span class="property">font-family</span>: <span class="value">Arial, sans-serif</span>;
+            <span class="property">margin</span>: <span class="value">0</span>;
+            <span class="property">padding</span>: <span class="value">0</span>;
+            <span class="property">background-color</span>: <span class="value">#f4f4f4</span>;
+        }
+        header {
+            <span class="property">background-color</span>: <span class="value">#333</span>;
+            <span class="property">color</span>: <span class="value">white</span>;
+            <span class="property">padding</span>: <span class="value">10px 0</span>;
+            <span class="property">text-align</span>: <span class="value">center</span>;
+        }
+        nav {
+            <span class="property">background-color</span>: <span class="value">#444</span>;
+            <span class="property">color</span>: <span class="value">white</span>;
+            <span class="property">padding</span>: <span class="value">10px</span>;
+            <span class="property">text-align</span>: <span class="value">center</span>;
+        }
+        nav a {
+            <span class="property">color</span>: <span class="value">white</span>;
+            <span class="property">margin</span>: <span class="value">0 10px</span>;
+            <span class="property">text-decoration</span>: <span class="value">none</span>;
+        }
+        main {
+            <span class="property">padding</span>: <span class="value">20px</span>;
+        }
+        footer {
+            <span class="property">background-color</span>: <span class="value">#333</span>;
+            <span class="property">color</span>: <span class="value">white</span>;
+            <span class="property">text-align</span>: <span class="value">center</span>;
+            <span class="property">padding</span>: <span class="value">10px 0</span>;
+            <span class="property">position</span>: <span class="value">fixed</span>;
+            <span class="property">width</span>: <span class="value">100%</span>;
+            <span class="property">bottom</span>: <span class="value">0</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;header&gt;
+        &lt;h1&gt;My Website&lt;/h1&gt;
+    &lt;/header&gt;
+    &lt;nav&gt;
+        &lt;a href="#home"&gt;Home&lt;/a&gt;
+        &lt;a href="#about"&gt;About&lt;/a&gt;
+        &lt;a href="#contact"&gt;Contact&lt;/a&gt;
+    &lt;/nav&gt;
+    &lt;main&gt;
+        &lt;section id="home"&gt;
+            &lt;h2&gt;Home&lt;/h2&gt;
+            &lt;p&gt;Welcome to my website!&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section id="about"&gt;
+            &lt;h2&gt;About&lt;/h2&gt;
+            &lt;p&gt;This is a sample website for the final project.&lt;/p&gt;
+        &lt;/section&gt;
+        &lt;section id="contact"&gt;
+            &lt;h2&gt;Contact&lt;/h2&gt;
+            &lt;p&gt;You can contact me at example@example.com&lt;/p&gt;
+        &lt;/section&gt;
+    &lt;/main&gt;
+    &lt;footer&gt;
+        &lt;p&gt;&copy; 2023 My Website&lt;/p&gt;
+    &lt;/footer&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="css-linking"><h2 class="section-title">CSS и способы его подключения</h2><div class="content-wrapper"><p class="section-text">CSS можно подключать к HTML-документу несколькими способами:</p><ul class="section-list"><li class="section-item">Встроенные стили: стили применяются непосредственно к элементу с помощью атрибута <span class="tag">style</span>.</li><li class="section-item">Внутренние стили: стили применяются внутри тега <span class="tag">&lt;style&gt;</span> в секции <span class="tag">&lt;head&gt;</span>.</li><li class="section-item">Внешние стили: стили применяются из отдельного CSS-файла с помощью тега <span class="tag">&lt;link&gt;</span>.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;CSS Linking Methods&lt;/title&gt;
+    &lt;style&gt;
+        /* Внутренние стили */
+        body {
+            <span class="property">font-family</span>: <span class="value">Arial, sans-serif</span>;
+        }
+        .internal {
+            <span class="property">color</span>: <span class="value">blue</span>;
+        }
+    &lt;/style&gt;
+    &lt;link rel="stylesheet" href="styles.css"&gt; 
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p class="internal"&gt;This is an internal style.&lt;/p&gt;
+    &lt;p class="external"&gt;This is an external style.&lt;/p&gt;
+    &lt;p style="color: green;"&gt;This is an inline style.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="selectors"><h2 class="section-title">Основные селекторы, специфичность, каскадность</h2><div class="content-wrapper"><p class="section-text">Селекторы в CSS используются для выбора элементов, к которым будут применяться стили. Основные типы селекторов:</p><ul class="section-list"><li class="section-item">Элементные селекторы: выбирают все элементы определенного типа (например, <span class="tag">p</span>, <span class="tag">div</span>).</li><li class="section-item">Классовые селекторы: выбирают элементы с определенным классом (например, <span class="tag">.classname</span>).</li><li class="section-item">Идентификационные селекторы: выбирают элемент с определенным идентификатором (например, <span class="tag">#id</span>).</li></ul><p class="section-text">Специфичность определяет, какой стиль будет применен, если несколько стилей конфликтуют. Каскадность определяет порядок применения стилей.</p><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Selectors, Specificity, and Cascade&lt;/title&gt;
+    &lt;style&gt;
+        /* Элементный селектор */
+        p {
+            <span class="property">color</span>: <span class="value">blue</span>;
+        }
+        /* Классовый селектор */
+        .class-selector {
+            <span class="property">font-weight</span>: <span class="value">bold</span>;
+        }
+        /* Идентификационный селектор */
+        #id-selector {
+            <span class="property">color</span>: <span class="value">red</span>;
+        }
+        /* Специфичность */
+        .class-selector.another-class {
+            <span class="property">background-color</span>: <span class="value">yellow</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;This is a paragraph.&lt;/p&gt;
+    &lt;p class="class-selector"&gt;This is a paragraph with a class.&lt;/p&gt;
+    &lt;p id="id-selector"&gt;This is a paragraph with an ID.&lt;/p&gt;
+    &lt;p class="class-selector another-class"&gt;This is a paragraph with multiple classes.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="fonts"><h2 class="section-title">Шрифты</h2><div class="content-wrapper"><p class="section-text">Шрифты в CSS настраиваются с помощью свойств <span class="tag">font-family</span>, <span class="tag">font-size</span>, <span class="tag">font-weight</span>, <span class="tag">font-style</span> и других. Можно использовать веб-шрифты с помощью <span class="tag">@font-face</span> или подключения через Google Fonts.</p><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Fonts Example&lt;/title&gt;
+    &lt;style&gt;
+        @font-face {
+            <span class="property">font-family</span>: <span class="value">'CustomFont'</span>;
+            <span class="property">src</span>: <span class="value">url('customfont.woff2') format('woff2')</span>;
+        }
+        body {
+            <span class="property">font-family</span>: <span class="value">'Arial', sans-serif</span>;
+        }
+        .custom-font {
+            <span class="property">font-family</span>: <span class="value">'CustomFont', sans-serif</span>;
+            <span class="property">font-size</span>: <span class="value">20px</span>;
+            <span class="property">font-weight</span>: <span class="value">bold</span>;
+        }
+        .italic-text {
+            <span class="property">font-style</span>: <span class="value">italic</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;p&gt;This is a regular text.&lt;/p&gt;
+    &lt;p class="custom-font"&gt;This is a text with a custom font.&lt;/p&gt;
+    &lt;p class="italic-text"&gt;This is a text with italic style.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="display"><h2 class="section-title">Свойство display</h2><div class="content-wrapper"><p class="section-text">Свойство <span class="tag">display</span> определяет, как элемент должен быть отображен. Возможные значения:</p><ul class="section-list"><li class="section-item"><span class="tag">block</span>: элемент занимает всю ширину контейнера.</li><li class="section-item"><span class="tag">inline</span>: элемент отображается в строке.</li><li class="section-item"><span class="tag">inline-block</span>: элемент отображается в строке, но может иметь ширину и высоту.</li><li class="section-item"><span class="tag">none</span>: элемент не отображается.</li><li class="section-item"><span class="tag">flex</span>: элемент становится flex-контейнером.</li><li class="section-item"><span class="tag">grid</span>: элемент становится grid-контейнером.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Display Property&lt;/title&gt;
+    &lt;style&gt;
+        .block {
+            <span class="property">display</span>: <span class="value">block</span>;
+            <span class="property">width</span>: <span class="value">100%</span>;
+            <span class="property">background-color</span>: <span class="value">lightblue</span>;
+        }
+        .inline {
+            <span class="property">display</span>: <span class="value">inline</span>;
+            <span class="property">background-color</span>: <span class="value">lightgreen</span>;
+        }
+        .inline-block {
+            <span class="property">display</span>: <span class="value">inline-block</span>;
+            <span class="property">width</span>: <span class="value">200px</span>;
+            <span class="property">background-color</span>: <span class="value">lightcoral</span>;
+        }
+        .none {
+            <span class="property">display</span>: <span class="value">none</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="block"&gt;Block Element&lt;/div&gt;
+    &lt;span class="inline"&gt;Inline Element&lt;/span&gt;
+    &lt;div class="inline-block"&gt;Inline-Block Element&lt;/div&gt;
+    &lt;div class="none"&gt;Hidden Element&lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="flex"><h2 class="section-title">Display: flex</h2><div class="content-wrapper"><p class="section-text">Свойство <span class="tag">display: flex</span> создает flex-контейнер, который позволяет гибко управлять расположением дочерних элементов. Основные свойства flex-контейнера:</p><ul class="section-list"><li class="section-item"><span class="tag">flex-direction</span>: определяет направление главной оси (<span class="value">row</span>, <span class="value">row-reverse</span>, <span class="value">column</span>, <span class="value">column-reverse</span>).</li><li class="section-item"><span class="tag">justify-content</span>: выравнивает элементы по главной оси (<span class="value">flex-start</span>, <span class="value">flex-end</span>, <span class="value">center</span>, <span class="value">space-between</span>, <span class="value">space-around</span>).</li><li class="section-item"><span class="tag">align-items</span>: выравнивает элементы по поперечной оси (<span class="value">flex-start</span>, <span class="value">flex-end</span>, <span class="value">center</span>, <span class="value">baseline</span>, <span class="value">stretch</span>).</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Flexbox Example&lt;/title&gt;
+    &lt;style&gt;
+        .flex-container {
+            <span class="property">display</span>: <span class="value">flex</span>;
+            <span class="property">flex-direction</span>: <span class="value">row</span>;
+            <span class="property">justify-content</span>: <span class="value">space-between</span>;
+            <span class="property">align-items</span>: <span class="value">center</span>;
+            <span class="property">height</span>: <span class="value">100px</span>;
+            <span class="property">background-color</span>: <span class="value">lightblue</span>;
+        }
+        .flex-item {
+            <span class="property">background-color</span>: <span class="value">lightcoral</span>;
+            <span class="property">padding</span>: <span class="value">10px</span>;
+            <span class="property">margin</span>: <span class="value">5px</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="flex-container"&gt;
+        &lt;div class="flex-item"&gt;Item 1&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 2&lt;/div&gt;
+        &lt;div class="flex-item"&gt;Item 3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section><section class="module-section" id="grid"><h2 class="section-title">Display: grid</h2><div class="content-wrapper"><p class="section-text">Свойство <span class="tag">display: grid</span> создает grid-контейнер, который позволяет создавать сложные макеты с помощью сетки. Основные свойства grid-контейнера:</p><ul class="section-list"><li class="section-item"><span class="tag">grid-template-columns</span>: определяет количество и размер столбцов.</li><li class="section-item"><span class="tag">grid-template-rows</span>: определяет количество и размер строк.</li><li class="section-item"><span class="tag">grid-gap</span>: определяет расстояние между ячейками сетки.</li><li class="section-item"><span class="tag">grid-template-areas</span>: определяет именованные области в сетке.</li></ul><div class="code-example"><div class="code-header"><p class="code-description">Пример кода:</p></div><div class="code-block"><pre><code class="language-html">
+&lt;!DOCTYPE html&gt;
+&lt;html lang="ru"&gt;
+&lt;head&gt;
+    &lt;meta charset="UTF-8"&gt;
+    &lt;title&gt;Grid Example&lt;/title&gt;
+    &lt;style&gt;
+        .grid-container {
+            <span class="property">display</span>: <span class="value">grid</span>;
+            <span class="property">grid-template-columns</span>: <span class="value">repeat(3, 1fr)</span>;
+            <span class="property">grid-template-rows</span>: <span class="value">100px 100px</span>;
+            <span class="property">grid-gap</span>: <span class="value">10px</span>;
+            <span class="property">background-color</span>: <span class="value">lightblue</span>;
+        }
+        .grid-item {
+            <span class="property">background-color</span>: <span class="value">lightcoral</span>;
+            <span class="property">padding</span>: <span class="value">20px</span>;
+            <span class="property">text-align</span>: <span class="value">center</span>;
+        }
+    &lt;/style&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;div class="grid-container"&gt;
+        &lt;div class="grid-item"&gt;Item 1&lt;/div&gt;
+        &lt;div class="grid-item"&gt;Item 2&lt;/div&gt;
+        &lt;div class="grid-item"&gt;Item 3&lt;/div&gt;
+        &lt;div class="grid-item"&gt;Item 4&lt;/div&gt;
+        &lt;div class="grid-item"&gt;Item 5&lt;/div&gt;
+        &lt;div class="grid-item"&gt;Item 6&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</code></pre><button class="copy-button">Копировать</button></div></div></div></section></main><footer class="site-footer"></footer><div class="code-editor__container"><img src="./../images/icons/code-editor.svg" alt="code editor icon"></div></div><div class="loader-container" id="loader-container"><div class="loader"></div></div></body></html>
