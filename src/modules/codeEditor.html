@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/theme/material.min.css">
+  <title>Code Editor by JS</title>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header"></header>
+    <div class="main-content">
+      <textarea id="codeEditor" name="codeEditor"></textarea>
+      <button id="runButton">Запустить код</button>
+      <div id="output" class="output"></div>
+    </div>
+    <footer class="site-footer"></footer>
+  </div>
+  <div class="loader-container" id="loader-container">
+    <div class="loader"></div>
+  </div>
+  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/codemirror.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.63.3/mode/javascript/javascript.min.js"></script>
+</body>
+</html>

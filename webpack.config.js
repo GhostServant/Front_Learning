@@ -5,6 +5,7 @@ const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 // Функция для динамического создания точек входа для SCSS
 const generateSCSSPagesEntries = () => {
@@ -63,8 +64,11 @@ module.exports = (env, argv) => {
           ],
         },
         {
-          test: /\.(png|jpg|gif|svg)$/i,
+          test: /\.(png|jpg|jpeg|gif|svg)$/i,
           type: 'asset/resource',
+          generator: {
+            filename: 'images/[name][ext]',
+          },
         },
       ],
     },
@@ -76,6 +80,13 @@ module.exports = (env, argv) => {
       ...generateHTMLPlugins(),
       ...(isProduction ? [new MiniCssExtractPlugin()] : []),
       new webpack.HotModuleReplacementPlugin(), // Явное включение HMR
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'src/images', to: 'images',noErrorOnMissing: true },
+          { from: 'src/images/img', to: 'images/img',noErrorOnMissing: true },
+          { from: 'src/images/icons', to: 'images/icons',noErrorOnMissing: true },
+        ],
+      }),
     ],
     optimization: {
       minimize: isProduction,

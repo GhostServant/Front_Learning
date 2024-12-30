@@ -5,21 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Модуль 3: Базовый CSS - свойство position, псевдоклассы и псевдоэлементы, медиа выражения, зачетная работа, способы подключения CSS, селекторы, шрифты, свойство display, flex и grid">
     <title>Модуль 3: Базовый CSS</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Подключение внешнего CSS файла -->
 </head>
 <body>
-    <header class="site-header">
-        <div class="header-container">
-            <h1 class="module-title">Модуль 3: Базовый CSS</h1>
-            <nav class="site-nav" role="navigation">
-                <ul class="nav-list">
-                    <li class="nav-item"><a class="nav-link" href="../index.html">Главная</a></li>
-                    <li class="nav-item"><a class="nav-link" href="module1.html">Модуль 1</a></li>
-                    <li class="nav-item"><a class="nav-link" href="module2.html">Модуль 2</a></li>
-                </ul>
-            </nav>
-        </div>
-    </header>
+  <div class="container">
+    <header class="site-header"></header>
     <aside class="sidebar">
         <h2>Содержание</h2>
         <ul>
@@ -604,8 +593,13 @@
             </div>
         </section>
     </main>
-    <footer class="footer">
-        <p class="footer-text">© 2024 Frontend Learning. Все права защищены.</p>
-    </footer>
+    <footer class="site-footer"></footer>
+    <div class="code-editor__container">
+      <img src="./../images/icons/code-editor.svg" alt="code editor icon">
+    </div>
+  </div>
+  <div class="loader-container" id="loader-container">
+    <div class="loader"></div>
+  </div>
 </body>
 </html>

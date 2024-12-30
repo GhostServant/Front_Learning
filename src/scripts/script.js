@@ -1,10 +1,15 @@
+import './routes.js'
+import './codeEditor.js'
+
 const toggleButton = document.querySelector('.toggle-button');
 const sidebar = document.querySelector('.sidebar');
+const container = document.querySelector(".container");
+const editContainerImg = document.querySelector(".code-editor__container")
 
 function createNotification() {
     const notification = document.createElement('div');
     notification.className = 'copy-notification';
-    document.body.appendChild(notification);
+    container.appendChild(notification);
     return notification;
 }
 
@@ -28,7 +33,7 @@ function copyCode(codeElement, button) {
             button.textContent = 'Скопировать код';
             notification.classList.remove('show');
         }, 2000);
-    }).catch(err => {
+    }).catch(_ => {
         notification.textContent = 'Ошибка при копировании';
         notification.style.backgroundColor = '#dc3545';
         notification.classList.add('show');
@@ -55,15 +60,29 @@ document.querySelectorAll('.copy-button').forEach(button => {
     });
 });
 
-toggleButton?.addEventListener('click', function() {
-    const isCollapsed = sidebar.classList.toggle('collapsed');
-    toggleButton.innerHTML = isCollapsed ? '<strong>&#9664;</strong> Закрыть меню' : '<strong>&#9654;</strong> Открыть меню';
-});
-sidebar?.querySelectorAll('a[href^="#"]').forEach(link => {
-    link.addEventListener('click', function(e) {
-        e.preventDefault();
-        const targetId = e.target.getAttribute('href');
-        const targetElement = document.querySelector(targetId);
-        targetElement.scrollIntoView({ behavior: 'smooth' });
-    })
-})
+// Обработчик для кнопки переключения, если она существует
+if (toggleButton) {
+  toggleButton.addEventListener('click', function() {
+      const isCollapsed = sidebar.classList.toggle('collapsed');
+      toggleButton.innerHTML = isCollapsed ? '<strong>&#9664;</strong> Закрыть меню' : '<strong>&#9654;</strong> Открыть меню';
+  });
+}
+
+// Обработчики для ссылок в сайдбаре, если они существуют
+if (sidebar) {
+  sidebar.querySelectorAll('a[href^="#"]').forEach(link => {
+      link.addEventListener('click', function(e) {
+          e.preventDefault();
+          const targetId = e.target.getAttribute('href');
+          const targetElement = document.querySelector(targetId);
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+      });
+  });
+}
+
+// Обработчик для контейнера редактора кода, если он существует
+if (editContainerImg) {
+  editContainerImg.addEventListener("click", () => {
+      window.location.pathname = "./modules/codeEditor.html";
+  });
+}

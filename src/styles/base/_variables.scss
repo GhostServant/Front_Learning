@@ -2,7 +2,12 @@
 $primary-color: #0066cc;
 $secondary-color: #2d3748;
 $background-color: #f8f9fa;
+$background-color-spare: #cac9c9;
 $text-color: #333333;
+
+// Code colors
+$code-background: #1e1e1e;
+$code-text: #d4d4d4;
 
 // Typography
 $font-family-base: 'Arial', sans-serif;
@@ -12,7 +17,7 @@ $line-height-base: 1.6;
 
 // Spacing
 $spacing-unit: 12px;
-$container-max-width: 1200px;
+$container-max-width: 1400px;
 
 // Breakpoints
 $breakpoint-sm: 576px;
@@ -29,7 +34,3 @@ $shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
 $border-radius-sm: 4px;
 $border-radius-md: 8px;
 $border-radius-lg: 12px;
-
-// Code colors
-$code-background: #1e1e1e;
-$code-text: #d4d4d4;
