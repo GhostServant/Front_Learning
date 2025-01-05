@@ -189,6 +189,28 @@ ul{
   }
 }
 
+#editor_container{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#runButton {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  margin: 10px auto;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  transition: background-color 0.3s ease;
+}
+
+#runButton:hover {
+  background-color: #45a049;
+}
+
 .loader-container {
   position: absolute;
   background-color: #fff;

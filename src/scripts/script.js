@@ -1,5 +1,4 @@
 import './routes.js'
-import './codeEditor.js'
 
 const toggleButton = document.querySelector('.toggle-button');
 const sidebar = document.querySelector('.sidebar');
@@ -19,15 +18,13 @@ function copyCode(codeElement, button) {
     const code = codeElement.innerText;
     
     navigator.clipboard.writeText(code).then(() => {
-        // Изменяем состояние кнопки
         button.classList.add('copied');
         button.textContent = 'Скопировано!';
         
-        // Показываем уведомление
+
         notification.textContent = 'Код успешно скопирован!';
         notification.classList.add('show');
         
-        // Возвращаем кнопку в исходное состояние
         setTimeout(() => {
             button.classList.remove('copied');
             button.textContent = 'Скопировать код';
@@ -43,7 +40,6 @@ function copyCode(codeElement, button) {
     });
 }
 
-// Добавляем язык программирования к блокам кода
 document.querySelectorAll('.code-block').forEach(block => {
     const code = block.querySelector('code');
     if (code) {
@@ -52,7 +48,6 @@ document.querySelectorAll('.code-block').forEach(block => {
     }
 });
 
-// Обработчики событий для кнопок копирования
 document.querySelectorAll('.copy-button').forEach(button => {
     button.addEventListener('click', () => {
         const codeElement = button.previousElementSibling.querySelector('code');
@@ -60,7 +55,6 @@ document.querySelectorAll('.copy-button').forEach(button => {
     });
 });
 
-// Обработчик для кнопки переключения, если она существует
 if (toggleButton) {
   toggleButton.addEventListener('click', function() {
       const isCollapsed = sidebar.classList.toggle('collapsed');
@@ -68,7 +62,6 @@ if (toggleButton) {
   });
 }
 
-// Обработчики для ссылок в сайдбаре, если они существуют
 if (sidebar) {
   sidebar.querySelectorAll('a[href^="#"]').forEach(link => {
       link.addEventListener('click', function(e) {
@@ -80,7 +73,6 @@ if (sidebar) {
   });
 }
 
-// Обработчик для контейнера редактора кода, если он существует
 if (editContainerImg) {
   editContainerImg.addEventListener("click", () => {
       window.location.pathname = "./modules/codeEditor.html";

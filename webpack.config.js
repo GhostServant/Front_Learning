@@ -18,14 +18,27 @@ const generateSCSSPagesEntries = () => {
   return entries;
 };
 
+// Функция для динамического создания точек входа для JS
+const generateJSEntries = () => {
+  const entries = {};
+  const files = glob.sync('./src/scripts/*.js');
+  files.forEach((file) => {
+    const name = path.basename(file, '.js'); // Имя файла без расширения
+    entries[name] = path.resolve(__dirname, file);
+  });
+  return entries;
+};
+
 // Функция для динамической генерации HtmlWebpackPlugin для всех HTML-файлов в modules
 const generateHTMLPlugins = () => {
   const files = glob.sync('./src/modules/**/*.html'); // Ищем все HTML-файлы
   return files.map((file) => {
-    const name = path.basename(file); // Имя файла (с расширением)
+    const name = path.basename(file, '.html'); // Имя файла без расширения
     return new HtmlWebpackPlugin({
       template: file, // Используем текущий HTML-файл как шаблон
-      filename: `modules/${name}`, // Имя выходного файла в dist
+      filename: `modules/${name}.html`, // Имя выходного файла в dist
+      chunks: ['bundle', 'main', name], // Убедитесь, что подключаются нужные чанки
+      inject: 'head', // Вставляем стили в head
     });
   });
 };
@@ -36,13 +49,15 @@ module.exports = (env, argv) => {
   return {
     entry: {
       bundle: './src/scripts/script.js', // Основной JavaScript
+      main: './src/styles/pages/main.scss', // Главные стили
+      ...generateJSEntries(), // Динамическая генерация JS
       ...generateSCSSPagesEntries(), // Динамическая генерация SCSS
     },
     output: {
-      filename: 'scripts/[name].[contenthash].js',
+      filename: isProduction ? 'scripts/[name].[contenthash].js' : 'scripts/[name].js',
       path: path.resolve(__dirname, 'dist'),
       clean: true,
-      publicPath: '/', // Убедитесь, что publicPath настроен правильно
+      publicPath: isProduction ? '/Front_Learning/' : '/', // Убедитесь, что publicPath настроен правильно
     },
     devServer: {
       static: {
@@ -76,15 +91,19 @@ module.exports = (env, argv) => {
       new HtmlWebpackPlugin({
         template: './src/index.html', // Шаблон HTML
         filename: 'index.html',
+        chunks: ['bundle', 'main'], // Убедитесь, что подключаются нужные чанки
+        inject: 'head', // Вставляем стили в head
       }),
       ...generateHTMLPlugins(),
-      ...(isProduction ? [new MiniCssExtractPlugin()] : []),
+      ...(isProduction ? [new MiniCssExtractPlugin({
+        filename: 'styles/[name].[contenthash].css',
+      })] : []),
       new webpack.HotModuleReplacementPlugin(), // Явное включение HMR
       new CopyWebpackPlugin({
         patterns: [
-          { from: 'src/images', to: 'images',noErrorOnMissing: true },
-          { from: 'src/images/img', to: 'images/img',noErrorOnMissing: true },
-          { from: 'src/images/icons', to: 'images/icons',noErrorOnMissing: true },
+          { from: 'src/images', to: 'images', noErrorOnMissing: true },
+          { from: 'src/images/img', to: 'images/img', noErrorOnMissing: true },
+          { from: 'src/images/icons', to: 'images/icons', noErrorOnMissing: true },
         ],
       }),
     ],
