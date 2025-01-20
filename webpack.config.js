@@ -7,38 +7,35 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
-// Функция для динамического создания точек входа для SCSS
 const generateSCSSPagesEntries = () => {
   const entries = {};
   const files = glob.sync('./src/styles/pages/*.scss');
   files.forEach((file) => {
-    const name = path.basename(file, '.scss'); // Имя файла без расширения
+    const name = path.basename(file, '.scss');
     entries[name] = path.resolve(__dirname, file);
   });
   return entries;
 };
 
-// Функция для динамического создания точек входа для JS
 const generateJSEntries = () => {
   const entries = {};
   const files = glob.sync('./src/scripts/*.js');
   files.forEach((file) => {
-    const name = path.basename(file, '.js'); // Имя файла без расширения
+    const name = path.basename(file, '.js'); 
     entries[name] = path.resolve(__dirname, file);
   });
   return entries;
 };
 
-// Функция для динамической генерации HtmlWebpackPlugin для всех HTML-файлов в modules
 const generateHTMLPlugins = () => {
-  const files = glob.sync('./src/modules/**/*.html'); // Ищем все HTML-файлы
+  const files = glob.sync('./src/modules/**/*.html');
   return files.map((file) => {
-    const name = path.basename(file, '.html'); // Имя файла без расширения
+    const name = path.basename(file, '.html');
     return new HtmlWebpackPlugin({
-      template: file, // Используем текущий HTML-файл как шаблон
-      filename: `modules/${name}.html`, // Имя выходного файла в dist
-      chunks: ['bundle', 'main', name], // Убедитесь, что подключаются нужные чанки
-      inject: 'head', // Вставляем стили в head
+      template: file,
+      filename: `modules/${name}.html`,
+      chunks: ['bundle', 'main', name],
+      inject: 'head', 
     });
   });
 };
@@ -48,23 +45,24 @@ module.exports = (env, argv) => {
 
   return {
     entry: {
-      bundle: './src/scripts/script.js', // Основной JavaScript
-      main: './src/styles/pages/main.scss', // Главные стили
-      ...generateJSEntries(), // Динамическая генерация JS
-      ...generateSCSSPagesEntries(), // Динамическая генерация SCSS
+      bundle: './src/scripts/script.js',
+      main: './src/styles/pages/main.scss', 
+      game: './src/scripts/game.js',
+      ...generateJSEntries(),
+      ...generateSCSSPagesEntries(),
     },
     output: {
       filename: isProduction ? 'scripts/[name].[contenthash].js' : 'scripts/[name].js',
       path: path.resolve(__dirname, 'dist'),
       clean: true,
-      publicPath: isProduction ? '/Front_Learning/' : '/', // Убедитесь, что publicPath настроен правильно
+      publicPath: isProduction ? '/Front_Learning/' : '/',
     },
     devServer: {
       static: {
         directory: path.join(__dirname, 'dist'),
       },
       open: true,
-      hot: true, // Включаем Hot Module Replacement
+      hot: true,
       historyApiFallback: true,
       watchFiles: ['./src/**/*.html'],
     },
@@ -73,7 +71,7 @@ module.exports = (env, argv) => {
         {
           test: /\.scss$/,
           use: [
-            isProduction ? MiniCssExtractPlugin.loader : 'style-loader', // Используем style-loader в режиме разработки
+            isProduction ? MiniCssExtractPlugin.loader : 'style-loader',
             'css-loader',
             'sass-loader',
           ],
@@ -89,16 +87,16 @@ module.exports = (env, argv) => {
     },
     plugins: [
       new HtmlWebpackPlugin({
-        template: './src/index.html', // Шаблон HTML
+        template: './src/index.html',
         filename: 'index.html',
-        chunks: ['bundle', 'main'], // Убедитесь, что подключаются нужные чанки
-        inject: 'head', // Вставляем стили в head
+        chunks: ['bundle', 'main', 'game'], 
+        inject: 'head',
       }),
       ...generateHTMLPlugins(),
       ...(isProduction ? [new MiniCssExtractPlugin({
         filename: 'styles/[name].[contenthash].css',
       })] : []),
-      new webpack.HotModuleReplacementPlugin(), // Явное включение HMR
+      new webpack.HotModuleReplacementPlugin(),
       new CopyWebpackPlugin({
         patterns: [
           { from: 'src/images', to: 'images', noErrorOnMissing: true },
@@ -113,9 +111,9 @@ module.exports = (env, argv) => {
         new TerserPlugin(),
         new CssMinimizerPlugin(),
       ],
-      runtimeChunk: 'single', // Добавьте эту строку для правильной работы HMR
+      runtimeChunk: 'single', 
     },
-    mode: isProduction ? 'production' : 'development', // Устанавливаем режим в зависимости от аргументов
-    target: 'web', // Укажите target для браузера
+    mode: isProduction ? 'production' : 'development', 
+    target: 'web',
   };
 };

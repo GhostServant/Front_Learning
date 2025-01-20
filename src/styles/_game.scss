@@ -1,0 +1,92 @@
+.code-game {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+}
+
+.code-game h2 {
+  color: #3498db;
+  margin-bottom: 10px;
+}
+
+.game-container {
+  text-align: center;
+}
+
+.game-info {
+  margin-bottom: 20px;
+}
+
+.game-info p {
+  margin: 5px 0;
+  font-size: 1.1em;
+}
+
+.game-area {
+  position: relative;
+  width: 100%;
+  height: 300px;
+  background: #f4f4f4;
+  border: 2px dashed #3498db;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.code-snippet-div,.code-snippet-span,
+.code-snippet-const,.code-snippet-let,
+.code-snippet-padding {
+  position: absolute;
+  color: white;
+  padding: 10px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: 1.2em;
+  user-select: none;
+}
+.code-snippet-div{
+  background-color: #2ecc71;
+}
+.code-snippet-span{
+  background-color: #2980b9;
+}
+.code-snippet-const{
+  background-color: #d44950;
+}
+.code-snippet-let{
+  background-color: #d7ba7d;
+}
+.code-snippet-padding{
+  background-color: #ce9178;
+}
+
+#start-game, #restart-game {
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #3498db;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.2em;
+  transition: background-color 0.3s ease;
+}
+
+#start-game:hover, #restart-game:hover {
+  background-color: #2980b9;
+}
+
+#game-over {
+  margin-top: 20px;
+  display: none;
+}
+
+#game-over.visible {
+  display: block;
+}
+
+.hidden {
+  display: none;
+}

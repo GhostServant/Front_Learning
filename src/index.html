@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Курс по изучению фронтенд разработки">
     <title>Фронтенд Обучение</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <div class="container">
@@ -29,6 +30,95 @@
             <h2 class="welcome-title">Добро пожаловать на сайт обучения фронтенд-разработке!</h2>
             <p class="welcome-text">Выберите модуль из меню для начала обучения.</p>
         </div>
+
+        <section class="tech-stack">
+            <h2>Технологии, которые вы изучите</h2>
+            <div class="tech-grid">
+                <div class="tech-card" data-tech="HTML">
+                    <img src="https://cdn-icons-png.flaticon.com/512/919/919827.png" alt="HTML">
+                    <div class="tech-description">HTML — стандартный язык разметки для создания веб-страниц.</div>
+                </div>
+                <div class="tech-card" data-tech="CSS">
+                    <img src="https://cdn-icons-png.flaticon.com/512/919/919826.png" alt="CSS">
+                    <div class="tech-description">CSS — язык стилей для оформления веб-страниц.</div>
+                </div>
+                <div class="tech-card" data-tech="JavaScript">
+                    <img src="https://cdn-icons-png.flaticon.com/512/919/919828.png" alt="JavaScript">
+                    <div class="tech-description">JavaScript — язык программирования для создания интерактивных веб-страниц.</div>
+                </div>
+                <div class="tech-card" data-tech="React">
+                    <img src="https://cdn-icons-png.flaticon.com/512/919/919851.png" alt="React">
+                    <div class="tech-description">React — библиотека JavaScript для создания пользовательских интерфейсов.</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="color-legend">
+          <h2>Уровень знаний</h2>
+          <div class="legend-container">
+              <div class="legend-item">
+                  <div class="color-box current"></div>
+                  <p>Текущие знания</p>
+              </div>
+              <div class="legend-item">
+                  <div class="color-box future"></div>
+                  <p>Будущие знания</p>
+              </div>
+          </div>
+      </section>
+
+        <section class="progress-section">
+            <h2>Уровень владения технологиями</h2>
+            <div class="progress-bars">
+                <div class="progress-bar" data-skill="HTML" data-current="50" data-future="75">
+                    <div class="progress-label">HTML</div>
+                    <div class="progress-track">
+                        <div class="progress-fill current" style="width: 50%;"></div>
+                        <div class="progress-fill future" style="width: 75%;"></div>
+                    </div>
+                </div>
+                <div class="progress-bar" data-skill="CSS" data-current="40" data-future="70">
+                    <div class="progress-label">CSS</div>
+                    <div class="progress-track">
+                        <div class="progress-fill current" style="width: 40%;"></div>
+                        <div class="progress-fill future" style="width: 70%;"></div>
+                    </div>
+                </div>
+                <div class="progress-bar" data-skill="JavaScript" data-current="30" data-future="60">
+                    <div class="progress-label">JavaScript</div>
+                    <div class="progress-track">
+                        <div class="progress-fill current" style="width: 30%;"></div>
+                        <div class="progress-fill future" style="width: 60%;"></div>
+                    </div>
+                </div>
+                <div class="progress-bar" data-skill="React" data-current="20" data-future="50">
+                    <div class="progress-label">React</div>
+                    <div class="progress-track">
+                        <div class="progress-fill current" style="width: 20%;"></div>
+                        <div class="progress-fill future" style="width: 50%;"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="code-game">
+    <h2>Мини-игра: Почини сайт!</h2>
+    <p>Собери достаточно кода, чтобы починить сломанный сайт. Кликай по появляющимся тегам!</p>
+    <div class="game-container">
+        <div class="game-info">
+            <p>Собрано кода: <span id="code-collected">0</span> / <span id="code-required">10</span></p>
+            <p>Уровень: <span id="game-level">1</span></p>
+        </div>
+        <div class="game-area">
+            <!-- Здесь будут появляться "кусочки кода" -->
+        </div>
+        <button id="start-game">Начать игру</button>
+        <div id="game-over" class="hidden">
+            <h3>Поздравляем! Вы починили сайт! 🎉</h3>
+            <button id="restart-game">Играть снова</button>
+        </div>
+    </div>
+</section>
     </main>
 
     <footer class="site-footer" role="contentinfo">
@@ -41,5 +131,21 @@
       <img class="code-editor__img" src="./images/icons/code-editor.svg" alt="code editor icon">
     </div>
   </div>
+
+  <script>
+    const techCards = document.querySelectorAll('.tech-card');
+
+    techCards.forEach(card => {
+        card.addEventListener('mouseenter', () => {
+            card.querySelector('.tech-description').style.opacity = '1';
+            card.querySelector('.tech-description').style.visibility = 'visible';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.querySelector('.tech-description').style.opacity = '0';
+            card.querySelector('.tech-description').style.visibility = 'hidden';
+        });
+    });
+  </script>
 </body>
 </html>
